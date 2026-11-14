@@ -30,7 +30,16 @@ class Loc {
 	}
 }
 
-
+define("Token_Name" , "Token_Name");
+define("TOKEN_OPAREN", "TOKEN_OPAREN");
+define("TOKEN_CPAREN", "TOKEN_CPAREN");
+define("TOKEN_OCURLY", "TOKEN_OCURLY");
+define("TOKEN_CCURLY", "TOKEN_CCURLY");
+define("TOKEN_COMMA", "TOKEN_COMMA");
+define("TOKEN_SEMICOLON", "TOKEN_SEMICOLON");
+define("TOKEN_NUMBER", "TOKEN_NUMBER");
+define("TOKEN_STRING", "TOKEN_STRING");
+define("TOKEN_RETURN", "TOKEN_RETURN");
 
 class Token {
 	public $type ;
