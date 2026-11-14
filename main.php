@@ -190,6 +190,33 @@ class lexer {
 	}
 }
 
+define("TYPE_INT", "TYPE_INT");
 
+class FuncallStmt {
+	public $name;
+	public $args;
 
+	public function __construct($name, $args) {
+		$this->name = $name;
+		$this->args = $args;
+	}
+}
+
+class RetStmt {
+	public $expr ;
+
+	public function __construct($expr) {
+		$this->expr = $expr;
+	}
+}
+
+class Func {
+	public $name; 
+	public $body ;
+
+	public function __construct($name, $body) {
+		$this->name = $name;
+		$this->body = $body;
+	}
+}
 
