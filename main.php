@@ -79,5 +79,30 @@ class lexer {
 	}
 
 	function drop_line() {
-		while ($this->is_not_empty() && $this->source
+		while ($this->is_not_empty() && $this->source[$this->cur] !== "\n") {
+			$this->chop();
+
+		}
+		if ($this->is_not_empty()){
+			$this->chop_char();
+		}
+	}
+
+	function next_token() {
+		$this->trim_left();
+		while ($this->is_not_empty()) {
+			$s = substr($this->source, $this->cur);
+			if (!php7_str_write_with($s, "#") && !php7_str_starts_with($s, "//")) break ;
+			$this->drop_line();
+			$this->trim_left();
+		}
+
+		if ($this->is_empty()) {
+			return false ;
+		}
+
+		$loc = $this->loc();
+		$first = $this->source[$this->cur];
+
+
 }
