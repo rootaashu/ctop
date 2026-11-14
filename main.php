@@ -30,7 +30,7 @@ class Loc {
 	}
 }
 
-define("Token_Name" , "Token_Name");
+define("TOKEN_NAME" , "TOKEN_NAME");
 define("TOKEN_OPAREN", "TOKEN_OPAREN");
 define("TOKEN_CPAREN", "TOKEN_CPAREN");
 define("TOKEN_OCURLY", "TOKEN_OCURLY");
@@ -104,5 +104,23 @@ class lexer {
 		$loc = $this->loc();
 		$first = $this->source[$this->cur];
 
+		if (ctype_alpha($first)) {
+			$index = $this->cur;
+			while ($this->is_not_empty() && ctype_alnum($this->source[$this->cur])) {
+				$this->chop_char();
+			}
 
+			$valule = substr($this->source, $index, $this->cur - $index);
+			return new Token($loc, TOKEN_NAME, $vlaue);
+		}
+
+		$literal_tokens = array(
+			"(" => TOKEN_OPAREN,
+			")" => TOKEN_CPAREN,
+			"{" => TOKEN_OCURLY,
+			"}" => TOKEN_CCURLY,
+			"," => TOKEN_COMMA,
+			";" => TOKEN_SEMICOLON,
+	}:
+	
 }
