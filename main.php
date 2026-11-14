@@ -71,4 +71,13 @@ class lexer {
 	function is_not_empty() {
 		return $this->cur < strlen($this->source);
 	}
+
+	function trim_left () {
+		while ($this->is_not_empty() && $ctype_space($this->source[$this->cur])) {
+			$this->chop_char();
+		}
+	}
+
+	function drop_line() {
+		while ($this->is_not_empty() && $this->source
 }
