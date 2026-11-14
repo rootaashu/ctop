@@ -175,4 +175,21 @@ class lexer {
 		exit (69);
 	}
 
+	if (ctype_digit($first)) {
+		$start = $this->cur;
+		while ($this->is_not_empty() && ctype_digit($this->source[$this->cur])){
+			$this->chop_char();
+		}
+
+		$value = (int)substr($this->source, $start, $this->cur - $start);
+		return new Token($loc, TOKEN_NUMBER, $value);
+	}
+
+	print("{$Loc->display()}: ERROR: unknown token starts with {$first}\n");
+	exit(69);
+	}
 }
+
+
+
+
