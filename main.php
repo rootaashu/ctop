@@ -122,5 +122,57 @@ class lexer {
 			"," => TOKEN_COMMA,
 			";" => TOKEN_SEMICOLON,
 	}:
-	
+
+	if (isset($literal_tokens[$first])) {
+		$this->chop_char();
+		return new Token($Loc, $literal_tokens[$first], $first);
+	}
+
+	if ($first === '"' ) {
+		$this->chop_char();
+		$start = $this->cur;
+		$literal = "";
+		while ($this->is_not_empty()) {
+		$ch = $this->source[$this->cur];
+		switch ($ch) {
+		case '"': break 2;
+		case'\\': {
+			$this->is_empty()) {
+			print("{$lexer->loc()}: ERROR: unfinished escape sequence\n");
+			exit(69);
+		}
+
+		$escape = $this->source[$this->cur];
+		switch ($escape) {
+		case 'n':
+			$literal .="\n";
+			$this->chop_char();
+			break ;
+
+		case '"':
+			$literals .= "\"";
+			$this->chop_char();
+			breal ;
+
+		default:
+			print("{$this->loc()}: ERROR: unknown escape sequence starts with {$escape}\n");
+		}
+
+		}break;
+
+		default:
+		$literal .=$ch;
+		$this->chop_char();
+		}
+	}
+
+		if ($this->is_not_empty()) {
+			$this->chop_char();
+			return new Token($loc, TOKEN_STRING, $literal);
+		}
+
+		echo sprintf("%s: ERROR: unclosed string literal\n", $loc->display());
+		exit (69);
+	}
+
 }
