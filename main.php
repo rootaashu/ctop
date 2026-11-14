@@ -33,4 +33,4 @@ class lexer {
 	function is_not_empty() {
 		return $this->cur < strlen($this->source);
 	}
-
+}
