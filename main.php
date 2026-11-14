@@ -14,6 +14,22 @@ function php7_str_with_start($haystack, $needle)  {
 	return substr($haystack, -$count) == $needle ;
 }
 
+class Loc {
+	public $file_path;
+	public $row;
+	public $col;
+
+	public function __construct($file_path, $row, $col){
+		$this->file_path = $file_path ;
+		$this->row = $row ;
+		$this->col = $col;
+	}
+
+	public function display() {
+		return sprintf("%s:%d:%d", $this->file_path, $this->row + 1, $this->col + 1;);
+	}
+}
+
 
 class lexer {
 	public $file_path;
