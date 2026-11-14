@@ -31,6 +31,19 @@ class Loc {
 }
 
 
+
+class Token {
+	public $type ;
+	public $loc ;
+	public $value ;
+	 
+	public function __construct($loc, $type, $value ){
+		$this->loc = $loc ;
+		$this->value = $value ;
+		$this->type = $type ;
+	}
+}
+
 class lexer {
 	public $file_path;
 	public $source;
