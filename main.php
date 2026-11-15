@@ -220,3 +220,10 @@ class Func {
 	}
 }
 
+function expect_token($lexer, ...$types) {
+	$token = $lexer->next_token();
+	if (!$token) {
+		echo sprintf("%s: ERROR: expected %s but got end of file\n",
+			$lexer->loc()->display(), join(" or ", $types));
+		return false ;
+	}
