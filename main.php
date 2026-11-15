@@ -241,4 +241,16 @@ function expect_token($lexer, ...$types) {
 	return false ;
 }
 
-function parse_type(
+function parse_type($lexer) {
+	$retrun_type = expect_token($lexer, TOKEN_NAME);
+	if ($return_type->value !== "int") {
+		echo sprintf("%s: ERROR: unexpected type %s",
+			$return_type->loc->display(),
+			$return_type->value);
+		return false;
+	}
+	return TYPE_INT;
+}
+
+function parse_arglist($lexer) {
+
