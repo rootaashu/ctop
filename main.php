@@ -227,3 +227,18 @@ function expect_token($lexer, ...$types) {
 			$lexer->loc()->display(), join(" or ", $types));
 		return false ;
 	}
+
+	foreach($type as &$type) {
+		if ($token->type == $type) {
+			return $token;
+		}
+	}
+
+	echo sprintf("%s: ERROR: expected %s but got %s\n",
+		$lexer->$loc()->display(),
+		join(" or ",$types),
+		$token->type);
+	return false ;
+}
+
+function parse_type(
